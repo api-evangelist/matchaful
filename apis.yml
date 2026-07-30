@@ -1,7 +1,16 @@
 aid: matchaful
 name: Matchaful
-description: Matchaful is a company surfaced as a portfolio company of techstars and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Matchaful is a premium Japanese matcha brand selling single-origin,
+  organically-grown ceremonial matcha from Shizuoka, Japan — ground to order,
+  pesticide-free, and third-party tested under its Farm-to-Whisk program. It sells
+  direct-to-consumer through a Shopify storefront and runs physical cafes, and is a
+  Techstars portfolio company. Matchaful publishes no traditional developer REST API
+  or OpenAPI, but its Shopify storefront exposes a live agent-commerce surface: an
+  /llms.txt and /agents.md agent instruction set, a Universal Commerce Protocol (UCP,
+  ucp.dev) merchant profile at /.well-known/ucp, a first-party MCP shopping endpoint
+  at /api/ucp/mcp, and Shopify Customer Account OIDC/OAuth discovery documents served
+  under the store domain.
 url: https://raw.githubusercontent.com/api-evangelist/matchaful/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,12 +18,47 @@ x-backed-by:
 - techstars
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+image: https://www.matchaful.com/cdn/shop/files/matchaful-organic-matcha-website-hero.jpg?v=1780489902
 tags:
 - Company
-apis: []
+- Matcha
+- Tea
+- Food and Beverage
+- CPG
+- E-Commerce
+- Direct-to-Consumer
+- Shopify
+- Agent Commerce
+- UCP
+- MCP
+apis:
+- name: Matchaful Agent Commerce (UCP)
+  description: >-
+    The store's Shopify-provided Universal Commerce Protocol agent-commerce surface —
+    a live MCP shopping endpoint (search_catalog, create_cart, create_checkout,
+    update_checkout, complete_checkout) documented in /llms.txt and the UCP merchant
+    profile. Checkout requires human buyer approval.
+  humanURL: https://www.matchaful.com/llms.txt
+  baseURL: https://www.matchaful.com/api/ucp/mcp
+  properties:
+  - type: MCPServer
+    url: mcp/matchaful-mcp.yml
+  - type: LLMsTxt
+    url: llms/matchaful-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +67,26 @@ maintainers:
 common:
 - type: Website
   url: https://matchaful.com/
+- type: Blog
+  url: https://www.matchaful.com/blogs/the-matchaful-blog
+- type: SignUp
+  url: https://www.matchaful.com/account/register
+- type: Support
+  url: https://www.matchaful.com/pages/contact-us
+- type: TermsOfService
+  url: https://www.matchaful.com/policies/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.matchaful.com/policies/privacy-policy
+- type: WellKnown
+  url: well-known/matchaful-well-known.yml
+- type: LLMsTxt
+  url: llms/matchaful-llms.txt
+- type: MCPServer
+  url: mcp/matchaful-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 8
+  pass: local-v1
