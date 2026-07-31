@@ -1,0 +1,37 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.matchaful.com/.well-known/
+host: https://www.matchaful.com
+note: >-
+  Matchaful runs its storefront on Shopify, which exposes the store's agent-commerce
+  and customer-account discovery surface under the store domain. The OIDC / OAuth
+  authorization-server documents are Shopify's Customer Account API (issuer
+  shopify.com/authentication/11206704) served at the matchaful.com domain; the UCP
+  document is the store's Universal Commerce Protocol (ucp.dev) merchant profile
+  advertising a live MCP shopping endpoint. All documents were fetched live and
+  saved verbatim.
+documents:
+  - path: /.well-known/security.txt          # RFC 9116
+    status: 404
+  - path: /.well-known/openid-configuration   # OIDC discovery (Shopify Customer Account API)
+    status: 200
+    file: matchaful-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server  # RFC 8414 (Shopify Customer Account API)
+    status: 200
+    file: matchaful-oauth-authorization-server.json
+  - path: /.well-known/ucp                    # Universal Commerce Protocol merchant profile (ucp.dev)
+    status: 200
+    file: matchaful-ucp.json
+  - path: /.well-known/api-catalog            # RFC 9727
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+oauth:
+  issuer: https://shopify.com/authentication/11206704
+  authorization_endpoint: https://shopify.com/authentication/11206704/oauth/authorize
+  token_endpoint: https://shopify.com/authentication/11206704/oauth/token
+  scopes_supported:
+    - openid
+    - email
+    - customer-account-api:full
+    - customer-account-mcp-api:full

@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.matchaful.com/agents.md
+note: >-
+  matchaful-agents.md is the store's own provider-published agent instruction
+  document (/agents.md), fetched verbatim. It mirrors /llms.txt and describes how
+  AI shopping agents should transact with the store via the UCP MCP endpoint and
+  the Shop skill (shop.app/SKILL.md). It is Shopify-generated agent guidance served
+  first-party at the store domain — not a hand-authored, operation-grounded skill,
+  since Matchaful publishes no OpenAPI to ground per-operation steps against.
+skills:
+  - file: matchaful-agents.md
+    name: Matchaful agent commerce (UCP) instructions
+    api: mcp/matchaful-mcp.yml
+    operations:
+      - search_catalog
+      - create_cart
+      - create_checkout
+      - update_checkout
+      - complete_checkout
+    source: https://www.matchaful.com/agents.md
