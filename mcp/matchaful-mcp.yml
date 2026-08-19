@@ -2,40 +2,46 @@ generated: '2026-07-20'
 method: searched
 status: published
 source: https://www.matchaful.com/.well-known/ucp
-note: >-
-  Matchaful's Shopify storefront exposes a live Universal Commerce Protocol (UCP,
-  ucp.dev) agent-commerce surface with an MCP transport. The MCP endpoint is served
-  first-party at the store domain. A live `tools/list` probe returned a valid
-  JSON-RPC error (-32001 "UCP discovery failed: Missing profile uri"), confirming
-  the endpoint is active but requires an agent profile URI to enumerate tools. The
-  tool surface below is documented in the store's /llms.txt and the UCP shopping
-  schema (https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json); it is a
-  standard Shopify/UCP shopping tool set, not a Matchaful-authored API.
+note: 'Matchaful''s Shopify storefront exposes a live Universal Commerce Protocol (UCP, ucp.dev) agent-commerce
+  surface with an MCP transport. The MCP endpoint is served first-party at the store domain. A live `tools/list`
+  probe returned a valid JSON-RPC error (-32001 "UCP discovery failed: Missing profile uri"), confirming
+  the endpoint is active but requires an agent profile URI to enumerate tools. The tool surface below
+  is documented in the store''s /llms.txt and the UCP shopping schema (https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json);
+  it is a standard Shopify/UCP shopping tool set, not a Matchaful-authored API.'
 server:
   name: matchaful-ucp-shopping
   protocol: ucp
   ucp_version: '2026-04-08'
-  supported_versions: ['2026-04-08', '2026-01-23']
+  supported_versions:
+  - '2026-04-08'
+  - '2026-01-23'
   transport: http
   url: https://www.matchaful.com/api/ucp/mcp
   canonical_url: https://matchaful-2.myshopify.com/api/ucp/mcp
   schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
-  auth: >-
-    Requires a UCP agent profile URI; buyer approval is mandatory to complete
-    payment. Rate-limited per IP (back off on HTTP 429).
+  auth: Requires a UCP agent profile URI; buyer approval is mandatory to complete payment. Rate-limited
+    per IP (back off on HTTP 429).
 tools:
-  - name: search_catalog
-    description: Find products in the store catalog matching the buyer's intent.
-    source: llms.txt / ucp.dev shopping schema
-  - name: create_cart
-    description: Create a cart and add desired items.
-    source: llms.txt / ucp.dev shopping schema
-  - name: create_checkout
-    description: Start the purchase flow from a cart.
-    source: llms.txt / ucp.dev shopping schema
-  - name: update_checkout
-    description: Set shipping address and shipping method on a checkout.
-    source: llms.txt / ucp.dev shopping schema
-  - name: complete_checkout
-    description: Finalize the purchase (buyer must approve payment).
-    source: llms.txt / ucp.dev shopping schema
+- name: search_catalog
+  description: Find products in the store catalog matching the buyer's intent.
+  source: llms.txt / ucp.dev shopping schema
+- name: create_cart
+  description: Create a cart and add desired items.
+  source: llms.txt / ucp.dev shopping schema
+- name: create_checkout
+  description: Start the purchase flow from a cart.
+  source: llms.txt / ucp.dev shopping schema
+- name: update_checkout
+  description: Set shipping address and shipping method on a checkout.
+  source: llms.txt / ucp.dev shopping schema
+- name: complete_checkout
+  description: Finalize the purchase (buyer must approve payment).
+  source: llms.txt / ucp.dev shopping schema
+deployment:
+  mode: remote
+  endpoint: https://www.matchaful.com/api/ucp/mcp
+  verified: probed
+  probe: live
+  tools: 13
+  checked: '2026-08-12'
+  source: catalog MCP census
