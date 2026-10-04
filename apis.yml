@@ -49,7 +49,7 @@ tags:
 - Matcha
 - Tea
 - Food and Beverage
-- CPG
+- Consumer Packaged Goods
 - E-Commerce
 - Direct to Consumer
 - Shopify
@@ -82,6 +82,9 @@ apis:
     url: mcp/matchaful-mcp.yml
   - type: LLMsTxt
     url: llms/matchaful-llms.txt
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: ucp
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
