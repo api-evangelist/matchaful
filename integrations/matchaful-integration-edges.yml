@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/matchaful/integrations
+- https://n8n.io/integrations/matchaful/
+- https://composio.dev/toolkits/matchaful
+- https://monid.ai/tools/matchaful
+checked:
+- https://composio.dev/toolkits/matchaful
+- https://monid.ai/tools/matchaful
+- https://n8n.io/integrations/matchaful/
+- https://zapier.com/apps/matchaful/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
